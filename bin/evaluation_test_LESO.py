@@ -5,7 +5,7 @@ import random
 from regressor import *
 
 
-datasets = ['../data/LESOData.csv']
+datasets = ['../data/LEBBData.csv','../data/LEVTData.csv','../data/LESOData.csv']
 
 for dataset in datasets:
 
@@ -16,7 +16,7 @@ for dataset in datasets:
     df = df[np.isfinite(df['WindSpd'])]
     df = df[np.isfinite(df['WindDir'])]
 
-    f = open('../data/iresults1_{}'.format(dataset[-12:]), 'w')
+    f = open('../data/results_{}'.format(dataset[-12:]), 'w')
     f.write('me_no_regr,me_simpl_regr,me_dir_w_simpl_regr,width\n')
 
     for i in range(10):
@@ -29,7 +29,7 @@ for dataset in datasets:
 
         for width in [5, 10, 20, 30, 40, 60, 90, 120, 180]:
             f.write('{},'.format(rmse_no_regression(test_df, 'MetarwindSpeed', 'WindSpd')))
-            f.write('{}\n,'.format(rmse_simple_linear_regression(test_df, train_df, 'MetarwindSpeed', 'WindSpd')))
-            #f.write('{},{}\n'.format(rmse_direction_weighted_simple_linear_regression(test_df, train_df, 'MetarwindSpeed', 'WindSpd', 'WindDir', width), width))
+            f.write('{},,'.format(rmse_simple_linear_regression(test_df, train_df, 'MetarwindSpeed', 'WindSpd')))
+            f.write('{},{}\n'.format(rmse_direction_weighted_simple_linear_regression(test_df, train_df, 'MetarwindSpeed', 'WindSpd', 'WindDir', width), width))
 
     f.close()
