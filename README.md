@@ -6,6 +6,6 @@ This code has been used to perform the experiments contained in a paper submitte
 
 /bin folder contains the python code to perform different non-parametric regression techniques for wind speed forecasting. To replicate the experiments a >2.7 Python interpreter is required and the following python libraries should be installed:
 
-numpy
-pandas
-ggplot
+* numpy
+* pandas
+* ggplot
